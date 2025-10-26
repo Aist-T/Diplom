@@ -75,7 +75,7 @@ Chitai-gorod
 ## Установка
 
 1. Клонируйте репозиторий:
-git clone 
+git clone https://github.com/Aist-T/Diplom.git
 
 2. Перейдите в каталог проекта
    Diplom

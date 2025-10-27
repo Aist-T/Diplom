@@ -4,7 +4,6 @@ from pages.Cart_api import AddToCartAPI
 from constants import API1_url
 from constants import API2_url
 from pages.Update_cart_api import UpdateCartAPI, DeleteFromCart, TestBookSearchAPI,CartApi
-from pages.Send_Empty_Post_Request_api import EmptyPostRequest
 @allure.feature("Поиск книг")
 @allure.story("Базовый поиск")
 @allure.title("Проверка успешного поиска книг")
@@ -177,3 +176,4 @@ def test_cart_clear(api_cart: CartApi, inside_test_data: dict) -> None:
  на получение информации о корзине после удаления: {delete.status_code}"""
     with allure.step("Проверка: количество товаров после удаления =0"):
         assert after_count == 0, "После удаления корзина не пуста"
+

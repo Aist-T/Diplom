@@ -51,9 +51,9 @@ class AddToCartAPI:
 
     # Инициализация класса
     def __init__(self, url):
-        """
-                    Создает новый объект для работы с API.
-        """
+"""
+Создает новый объект для работы с API.
+"""
         self.url = url
         self.headers = {
             'Content-Type': 'application/json',  # Установка типа контента
@@ -61,15 +61,15 @@ class AddToCartAPI:
         }
 
     def add_product_to_cart(self, product_id: int, item_list_name: str) -> int:
-        """             Добавляет товар в корзину и возвращает статус-код ответа.
+ """  Добавляет товар в корзину и возвращает статус-код ответа.
         
-                        Args:
-                            product_id (int): ID товара для добавления.
-                            item_list_name (str): Имя списка, к которому принадлежит товар.
+Args:
+product_id (int): ID товара для добавления.
+item_list_name (str): Имя списка, к которому принадлежит товар.
         
-                        Returns:
-                            int: Статус-код ответа от сервера (например, 200 для успешного добавления).
-        """
+Returns:
+int: Статус-код ответа от сервера (например, 200 для успешного добавления).
+"""
         # Данные для добавления товара
         payload = {
             "id": product_id,  # ID товара
@@ -90,11 +90,11 @@ class DeleteFromCart:
 
     @allure.step("Инициализация класса DeleteFromCart")
     def __init__(self, url):
-        """
-        Создает объект для работы с корзиной.
+"""
+Создает объект для работы с корзиной.
 
-        :param url: URL для удаления товара из корзины.
-        """
+:param url: URL для удаления товара из корзины.
+"""
         self.url = url
         self.headers = {
             'Content-Type': 'application/json',  # Указываем, что отправляем JSON
@@ -103,11 +103,10 @@ class DeleteFromCart:
 
     @allure.step("Получение содержимого корзины")
     def get_cart_contents(self)-> dict:
-        """
-        Получает содержимое корзины.
-
-        :return: Статус-код ответа и содержимое корзины в формате JSON.
-        """
+"""
+Получает содержимое корзины.
+:return: Статус-код ответа и содержимое корзины в формате JSON.
+"""
         # Отправляем GET-запрос для получения содержимого корзины
         response = requests.get(self.url_2, headers=self.headers)
         return response.status_code, response.json()  # Возвращаем статус-код и данные корзины
@@ -189,4 +188,5 @@ class CartApi:
     def change_product_quantity(self, quantity_id: dict) -> dict:
         path = self.cart_url
         resp = requests.put(path, headers=self.params, json=quantity_id)
+
         return resp     

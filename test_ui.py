@@ -16,10 +16,9 @@ delete_from_cart = DeleteFromCart
 @allure.feature("READ")
 @allure.severity("CRITICAL")
 def test_search_by_author ():
-        """ 
-                          Проверка корректности результатов поиска по автору.
-                          
-        """
+""" 
+Проверка корректности результатов поиска по автору.                        
+ """
         with allure.step ("Запустить браузер Chrome"):
             driver = webdriver.Chrome() 
        
@@ -44,10 +43,9 @@ def test_search_by_author ():
 @allure.feature("CREATE")
 @allure.severity("BLOCKER")
 def test_add_to_card():
-        """
-                             Проверка корректности добавления товара в корзину.
-                             
-        """
+ """
+ Проверка корректности добавления товара в корзину.
+ """
         with allure.step ("Запустить браузер Chrome"):
             driver = webdriver.Chrome() 
         
@@ -72,10 +70,9 @@ def test_add_to_card():
 @allure.feature("DELETE")
 @allure.severity("BLOCKER")
 def test_delete_from_card():
-        """
-                             Проверка корректности удаления товара из корзины.
-                             
-        """
+"""
+Проверка корректности удаления товара из корзины.
+"""
 
         with allure.step ("Запустить браузер Chrome"):
             driver = webdriver.Chrome() 
@@ -100,12 +97,11 @@ def test_delete_from_card():
 @allure.story("Поиск по жанру")
 @allure.severity(allure.severity_level.NORMAL)
 def test_search_by_genre():
-    """ 
-                          Проверка корректности результатов поиска по жанру, 
-                          добавляет первую гнигу из результата покиска в корзину, 
-                          увеличивает число копий книги на 1 в корзине
-                          
-        """
+""" 
+Проверка корректности результатов поиска по жанру, 
+добавляет первую гнигу из результата покиска в корзину, 
+увеличивает число копий книги на 1 в корзине
+"""
     with allure.step ("Запустить браузер Chrome"):
             driver = webdriver.Chrome() 
        
@@ -178,4 +174,5 @@ def test_search_by_genre():
     with allure.step("Проверка нового количества"):
         
         new_quantity = driver.find_element(By.XPATH, "//input[@name='quantity']").get_attribute("value")
+
         assert int(new_quantity) == current_quantity + 1

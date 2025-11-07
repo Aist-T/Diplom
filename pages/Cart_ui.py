@@ -7,20 +7,18 @@ class AddToCart:
   
     # ИНИЦИАЛИЗАЦИЯ
     def __init__(self, book_title: str):
-        """         Создает объект для добавления книги в корзину.
-
-                    :param book_title: Название книги для добавления в корзину.
-        """
+"""  Создает объект для добавления книги в корзину.
+ :param book_title: Название книги для добавления в корзину. """
         self.book_title = book_title
 
     # ПОИСК КНИГИ ПО НАЗВАНИЮ
     def search_by_title(self, driver: webdriver.Chrome, book_title: str) -> dict:
-        """         Ищет книгу по названию и добавляет её в корзину.
+  """  Ищет книгу по названию и добавляет её в корзину.
 
-                    :param driver: Экземпляр драйвера Selenium.
-                    :param book_title: Название книги для поиска.
-                    :return: Словарь с результатами поиска (в данном методе возвращает None).
-        """
+   :param driver: Экземпляр драйвера Selenium.
+   :param book_title: Название книги для поиска.
+   :return: Словарь с результатами поиска (в данном методе возвращает None).
+  """
         # Ввод названия книги в строку поиска
         driver.find_element(By.NAME, "phrase").send_keys(book_title)
         
@@ -41,21 +39,21 @@ class SearchByAuthor:
     """Класс для выполнения поиска книг по автору на сайте Читай-город."""
 
     def __init__(self, author_name: str):
-        """
-                Инициализация класса SearchByAuthor.
+ """
+ Инициализация класса SearchByAuthor.
 
-                :param author_name: Имя автора, книги которого необходимо найти.
-        """
+ :param author_name: Имя автора, книги которого необходимо найти.
+ """
         self.author_name = author_name
 
     @allure.step("Поиск книги по автору")
     def search_by_author(self, driver: webdriver.Chrome) -> None:
-        """         
-                Поиск книг по имени автора на сайте Читай-город.
+   """         
+   Поиск книг по имени автора на сайте Читай-город.
 
-                :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
-                :raises Exception: Возникает, если не удается найти элементы поиска на странице.
-        """
+  :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
+  :raises Exception: Возникает, если не удается найти элементы поиска на странице.
+   """
         try:
             # Ввод имени автора в строку поиска
             search_input = driver.find_element(By.NAME, "phrase")
@@ -70,24 +68,24 @@ class SearchByAuthor:
             raise   
 @allure.description("Тестирование поля поиска по названию на сайте Читай-город.")
 class SearchByTitle:
-    """Класс для выполнения поиска книг по названию на сайте Читай-город."""
+ """Класс для выполнения поиска книг по названию на сайте Читай-город."""
 
     def __init__(self, book_title: str):
-        """
-                    Инициализация класса SearchByTitle.
+ """
+ Инициализация класса SearchByTitle.
 
-                    :param book_title: Название книги, которую необходимо найти.
-        """
+:param book_title: Название книги, которую необходимо найти.
+"""
         self.book_title = book_title
 
     @allure.step("Поиск книги по названию")
     def search_by_title(self, driver: webdriver.Chrome) -> None:
-        """
-                    Поиск книг по названию на сайте Читай-город.
+  """
+  Поиск книг по названию на сайте Читай-город.
 
-                    :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
-                    :raises Exception: Возникает, если не удается найти элементы поиска на странице.
-        """
+ :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
+ :raises Exception: Возникает, если не удается найти элементы поиска на странице.
+ """
         # Ввод названия в строку поиска
         try:
             search_input = driver.find_element(By.NAME, "phrase")
@@ -101,22 +99,22 @@ class SearchByTitle:
             raise   
 @allure.description("Тестирование удаления товара из корзины на сайте Читай-город.")
 class DeleteFromCart:
-          """Класс для удаления товара из корзины на сайте Читай-город."""
+ """Класс для удаления товара из корзины на сайте Читай-город."""
 def __init__(self, book_title: str): 
-        """
-        Инициализация класса DeleteFromCart.
+  """
+  Инициализация класса DeleteFromCart.
         
-        :param book_title: Название книги, которую нужно удалить из корзины.
-        """
+ :param book_title: Название книги, которую нужно удалить из корзины.
+  """
         self.book_title = book_title
 @allure.step("Поиск книги по названию и удаление из корзины")
 def delete_from_cart(self, driver: webdriver.Chrome) -> None:
-        """
-        Поиск книги по названию, добавление в корзину и удаление из нее.
+ """
+ Поиск книги по названию, добавление в корзину и удаление из нее.
 
-        :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
-        :raises Exception: Возникает, если не удается найти элементы на странице.
-        """
+ :param driver: Экземпляр драйвера Selenium (в данном случае Chrome).
+ :raises Exception: Возникает, если не удается найти элементы на странице.
+ """
     
             # Поиск книги по названию
         driver.find_element(By.NAME, "phrase").send_keys(self.book_title)
@@ -135,4 +133,5 @@ def delete_from_cart(self, driver: webdriver.Chrome) -> None:
 
             # Клик по кнопке "Очистить корзину"
         delete_button = driver.find_element(By.CSS_SELECTOR, 'span.clear-cart')
+
         delete_button.click()             
